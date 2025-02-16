@@ -1,5 +1,4 @@
 import paho.mqtt.client as mqtt
-import sys
 import configparser
 import time
 from threading import Thread
