@@ -1,0 +1,17 @@
+[project]
+name = "mqtt2html"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Marco Bakera",email = "bakera@tbs1.de"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "paho-mqtt (>=2.1.0,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
