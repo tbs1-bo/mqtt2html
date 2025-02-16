@@ -25,10 +25,13 @@ def on_message(client, userdata, msg):
     }
 
 def export_to_html():
+    export_interval = int(config["html"]["export_interval"])
+    filename = config["html"]["filename"]
+    print("Exportiere alle", export_interval, "Sekunden nach HTML in", filename)
     while True:
-        time.sleep(10)  # Alle 10 Sekunden
-        with open("output.html","w") as f:
-            f.write("<html><body><table border='1'>")
+        time.sleep(export_interval)
+        with open(filename,"w") as f:
+            f.write('<html><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"></head><body><table border="1">')
             f.write("<tr><th>Topic</th><th>Inhalt</th><th>Letzte Aktualisierung</th></tr>")
             for topic, data in messages.items():
                 f.write(f"<tr><td>{topic}</td><td>{data['content']}</td><td>{data['timestamp']}</td></tr>")
@@ -44,7 +47,6 @@ def main():
 
     print("Verbinde zu", host, "auf Port", port)
     client.connect(host, port, 60)
-
 
     Thread(target=export_to_html, daemon=True).start()
     client.loop_forever()
