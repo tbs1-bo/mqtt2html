@@ -173,5 +173,6 @@ cython_debug/
 # poetry
 poetry.lock
 
-# local config
+# local config and html output
 config.ini
+output.html
